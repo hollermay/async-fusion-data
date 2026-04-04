@@ -56,6 +56,9 @@ const pipeline = new PipelineBuilder({ name: 'analytics' })
     .transform(data => enrichData(data))
     .sink('spark', { job: 'analytics-job' });
 ```
+## Architecture
+
+<img width="6278" height="1557" alt="mermaid-diagram (3)" src="https://github.com/user-attachments/assets/b5f4bb4e-6a3a-4acd-8e24-f88c4db51830" />
 
 ## Features
 
