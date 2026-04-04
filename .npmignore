@@ -1,0 +1,37 @@
+# Source files
+src/
+__tests__/
+examples/
+*.ts
+!*.d.ts
+
+# Development files
+tsconfig.json
+rollup.config.js
+tsup.config.ts
+.eslintrc
+.prettierrc
+.npmrc
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
+
+# Checkpoints
+checkpoints/
+*.checkpoint
+
+# Temporary files
+*.tmp
+*.swp
