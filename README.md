@@ -1,3 +1,5 @@
+<img width="400" height="400" alt="generated-image (1)" src="https://github.com/user-attachments/assets/2f279770-e021-4d21-8357-005531b68d2d" />
+
 ### A Unified Data Streaming Library for Kafka, Spark, and Modern Data Pipelines
 
 Built with lots of bugs :P and love <3 by Udayan Sharma
