@@ -2,6 +2,8 @@
 
 Built with lots of bugs :P and love <3 by Udayan Sharma
 
+**NPM Link**: [Click here](https://www.npmjs.com/package/@async-fusion/data)
+
 [![npm version](https://img.shields.io/npm/v/@async-fusion/data.svg?style=flat-square)](https://www.npmjs.com/package/@async-fusion/data)
 [![npm downloads](https://img.shields.io/npm/dm/@async-fusion/data.svg?style=flat-square)](https://www.npmjs.com/package/@async-fusion/data)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
