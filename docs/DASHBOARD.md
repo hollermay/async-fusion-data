@@ -10,7 +10,6 @@ The Live Dashboard provides real-time monitoring and visualization for your data
 - Multi-pipeline Support: Monitor multiple pipelines simultaneously
 - Automatic Dashboard Management: Singleton pattern ensures one dashboard instance
 - WebSocket Communication: Efficient real-time data transfer
-- Beautiful UI: Professional dark-themed dashboard with responsive design
 - Error Tracking: Visual indication of pipeline errors
 - Throughput Monitoring: Records per second metrics
 
