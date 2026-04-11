@@ -1,10 +1,6 @@
-<img width="400" height="400" alt="generated-image (1)" src="https://github.com/user-attachments/assets/2f279770-e021-4d21-8357-005531b68d2d" />
-
 ### A Unified Data Streaming Library for Kafka, Spark, and Modern Data Pipelines
 
 Built with lots of bugs :P and love <3 by Udayan Sharma
-
-**NPM Link**: [Click here](https://www.npmjs.com/package/@async-fusion/data)
 
 [![npm version](https://img.shields.io/npm/v/@async-fusion/data.svg?style=flat-square)](https://www.npmjs.com/package/@async-fusion/data)
 [![npm downloads](https://img.shields.io/npm/dm/@async-fusion/data.svg?style=flat-square)](https://www.npmjs.com/package/@async-fusion/data)
@@ -33,7 +29,8 @@ Built with lots of bugs :P and love <3 by Udayan Sharma
 - [License](#license)
 
 ---
-
+## Latest Features
+- [Live Dashboard Documentation](./docs/DASHBOARD.md) 
 ## Why This Library?
 
 ### The Problem
@@ -60,9 +57,6 @@ const pipeline = new PipelineBuilder({ name: 'analytics' })
     .transform(data => enrichData(data))
     .sink('spark', { job: 'analytics-job' });
 ```
-## Architecture
-
-<img width="6278" height="1557" alt="mermaid-diagram (3)" src="https://github.com/user-attachments/assets/b5f4bb4e-6a3a-4acd-8e24-f88c4db51830" />
 
 ## Features
 

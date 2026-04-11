@@ -1,4 +1,6 @@
 import { PipelineConfig, PipelineSource, PipelineSink, Message } from '../types';
+import { LiveDashboard } from '../dashboard/server';
+import { dashboardManager } from '../dashboard/manager';
 
 export interface RetryConfig {
     maxAttempts: number;
@@ -18,6 +20,8 @@ export class PipelineBuilder {
     private transforms: Array<(data: any) => any> = [];
     private sinks: Array<{ type: PipelineSink; config: any }> = [];
     private options: PipelineOptions;
+    private dashboard: LiveDashboard | null = null;
+    private dashboardEnabled: boolean = false;  // ✅ ADD THIS LINE
     private metrics: {
         processed: number;
         errors: number;
@@ -60,6 +64,14 @@ export class PipelineBuilder {
         return this;
     }
 
+    enableDashboard(port?: number): this {
+    const dashboardPort = port || 3000;
+    dashboardManager.start(dashboardPort);
+    dashboardManager.registerPipeline(this.config.name);
+    this.dashboardEnabled = true;
+    return this;
+    }
+
     async run(): Promise<void> {
         this.metrics.startTime = new Date();
         console.log(`🚀 Starting pipeline: ${this.config.name}`);
@@ -86,7 +98,6 @@ export class PipelineBuilder {
     private async processSource(source: { type: PipelineSource; config: any }): Promise<void> {
         console.log(`📡 Processing source: ${source.type}`);
         
-        // Simulate data processing with retry logic
         const mockData = [
             { id: 1, name: 'Record 1', value: 100 },
             { id: 2, name: 'Record 2', value: 200 },
@@ -111,6 +122,11 @@ export class PipelineBuilder {
                 }
             }
             
+            // ✅ ONLY ONE metric recording (using dashboardManager)
+            if (this.dashboardEnabled) {
+                dashboardManager.recordMetric(this.config.name, 1, 0);
+            }
+            
             // Send to sinks
             for (const sink of this.sinks) {
                 await this.writeToSink(sink, result);
@@ -120,6 +136,11 @@ export class PipelineBuilder {
             
         } catch (error) {
             const maxAttempts = this.options.retryConfig?.maxAttempts || 3;
+
+            // ✅ ONLY ONE error recording (using dashboardManager)
+            if (this.dashboardEnabled) {
+                dashboardManager.recordMetric(this.config.name, 0, 1);
+            }
             
             if (attempt < maxAttempts) {
                 const delay = (this.options.retryConfig?.delayMs || 1000) * 
@@ -147,7 +168,6 @@ export class PipelineBuilder {
                 console.log(`[${sink.type}]`, JSON.stringify(data, null, 2));
                 break;
             case 'file':
-                // Simulate file write
                 console.log(`📁 Writing to file: ${sink.config.filePath}`);
                 break;
             case 'kafka':
@@ -160,7 +180,6 @@ export class PipelineBuilder {
                 console.log(`📤 Sending to ${sink.type}`);
         }
         
-        // Simulate async operation
         await this.sleep(10);
     }
 

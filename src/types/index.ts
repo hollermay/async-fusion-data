@@ -13,13 +13,6 @@ export interface KafkaConfig {
 // Use 'any' for KafkaJS to bypass type checking
 export type KafkaJSConfig = any;
 
-export interface SparkConfig {
-  master: string;
-  appName: string;
-  sparkConf?: Record<string, string>;
-  pythonPath?: string;
-}
-
 export interface PipelineConfig {
   name: string;
   checkpointLocation?: string;
@@ -34,13 +27,31 @@ export interface Message<T = any> {
   offset?: number;
 }
 
+export interface SparkConfig {
+    master: string;
+    appName?: string;
+    sparkHome?: string;
+    deployMode?: 'client' | 'cluster';
+    executorMemory?: string;
+    executorCores?: number;
+    numExecutors?: number;
+    driverMemory?: string;
+    sparkConf?: Record<string, string>;
+    environment?: Record<string, string>;
+}
+
 export interface SparkJob {
-  id: string;
-  status: 'pending' | 'running' | 'completed' | 'failed' | 'cancelled';
-  progress: number;
-  startTime: Date;
-  endTime?: Date;
-  stages: SparkStage[];
+    id: string;
+    status: 'pending' | 'submitted' | 'running' | 'completed' | 'failed' | 'cancelled' | 'timeout';
+    progress: number;
+    startTime: Date;
+    endTime?: Date;
+    result?: string;
+    error?: string;
+    stdout?: string;
+    stderr?: string;
+    applicationId?: string;
+    trackingUrl?: string;
 }
 
 export interface SparkStage {

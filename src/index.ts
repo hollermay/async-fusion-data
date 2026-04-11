@@ -50,6 +50,11 @@ export { SparkSQL } from './spark/sql';
 export { PipelineBuilder } from './pipeline/builder';
 export { PipelineMonitor } from './pipeline/monitoring';
 
+// Dashboard exports
+export { LiveDashboard } from './dashboard/server';
+export type { DashboardMetrics, PipelineMetrics } from './dashboard/server';
+export { dashboardManager } from './dashboard/manager';
+
 // Utils
 export { withRetry, sleep, CircuitBreaker, RetryableError, FatalError } from './utils/error-handling';
 
