@@ -306,7 +306,7 @@ http://localhost:3000
 | Uptime | Dashboard runtime duration |
 | Pipelines List | Individual pipeline metrics |
 
-![alt text](./images/image.png)
+![alt text](../images/image.png)
 
 ### Dashboard Features
 
