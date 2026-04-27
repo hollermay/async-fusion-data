@@ -1,6 +1,6 @@
 // Built by Udayan Sharma
 
-export const version = '1.0.0';
+export const version = '1.2.0';
 
 export const library = {
     name: '@async-fusion/data',
@@ -60,3 +60,7 @@ export { withRetry, sleep, CircuitBreaker, RetryableError, FatalError } from './
 
 // Types
 export * from './types';
+
+//LLM exports
+export { LLMPipelineGenerator } from './llm';
+export type { GeneratorConfig, GeneratedPipeline } from './llm';
